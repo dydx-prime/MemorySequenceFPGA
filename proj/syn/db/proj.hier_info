@@ -1,0 +1,461 @@
+|proj
+clk => clk.IN3
+reset => reset.IN3
+id_input[0] => id_input[0].IN1
+id_input[1] => id_input[1].IN1
+id_input[2] => id_input[2].IN1
+id_input[3] => id_input[3].IN1
+player_input[0] => player_input[0].IN1
+player_input[1] => player_input[1].IN1
+player_input[2] => player_input[2].IN1
+player_input[3] => player_input[3].IN1
+auth_button => auth_button.IN1
+game_start_btn => game_start_btn.IN1
+logged_out => logged_out.IN1
+ID_passed << controlUnit:cU1.ID_match
+password_passed << logged_in.DB_MAX_OUTPUT_PORT_TYPE
+hex5_display[0] << display_manager:dm1.hex5_display
+hex5_display[1] << display_manager:dm1.hex5_display
+hex5_display[2] << display_manager:dm1.hex5_display
+hex5_display[3] << display_manager:dm1.hex5_display
+hex5_display[4] << display_manager:dm1.hex5_display
+hex5_display[5] << display_manager:dm1.hex5_display
+hex5_display[6] << display_manager:dm1.hex5_display
+hex4_display[0] << display_manager:dm1.hex4_display
+hex4_display[1] << display_manager:dm1.hex4_display
+hex4_display[2] << display_manager:dm1.hex4_display
+hex4_display[3] << display_manager:dm1.hex4_display
+hex4_display[4] << display_manager:dm1.hex4_display
+hex4_display[5] << display_manager:dm1.hex4_display
+hex4_display[6] << display_manager:dm1.hex4_display
+hex3_display[0] << display_manager:dm1.hex3_display
+hex3_display[1] << display_manager:dm1.hex3_display
+hex3_display[2] << display_manager:dm1.hex3_display
+hex3_display[3] << display_manager:dm1.hex3_display
+hex3_display[4] << display_manager:dm1.hex3_display
+hex3_display[5] << display_manager:dm1.hex3_display
+hex3_display[6] << display_manager:dm1.hex3_display
+hex2_display[0] << display_manager:dm1.hex2_display
+hex2_display[1] << display_manager:dm1.hex2_display
+hex2_display[2] << display_manager:dm1.hex2_display
+hex2_display[3] << display_manager:dm1.hex2_display
+hex2_display[4] << display_manager:dm1.hex2_display
+hex2_display[5] << display_manager:dm1.hex2_display
+hex2_display[6] << display_manager:dm1.hex2_display
+hex1_display[0] << display_manager:dm1.hex1_display
+hex1_display[1] << display_manager:dm1.hex1_display
+hex1_display[2] << display_manager:dm1.hex1_display
+hex1_display[3] << display_manager:dm1.hex1_display
+hex1_display[4] << display_manager:dm1.hex1_display
+hex1_display[5] << display_manager:dm1.hex1_display
+hex1_display[6] << display_manager:dm1.hex1_display
+hex0_display[0] << display_manager:dm1.hex0_display
+hex0_display[1] << display_manager:dm1.hex0_display
+hex0_display[2] << display_manager:dm1.hex0_display
+hex0_display[3] << display_manager:dm1.hex0_display
+hex0_display[4] << display_manager:dm1.hex0_display
+hex0_display[5] << display_manager:dm1.hex0_display
+hex0_display[6] << display_manager:dm1.hex0_display
+
+
+|proj|button_shaper:authentication
+clk => state~1.DATAIN
+reset => state.OUTPUTSELECT
+reset => state.OUTPUTSELECT
+reset => state.OUTPUTSELECT
+in => Selector0.IN1
+in => nextState.one.DATAB
+in => Selector1.IN2
+out <= out.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|proj|button_shaper:start_game_player_load
+clk => state~1.DATAIN
+reset => state.OUTPUTSELECT
+reset => state.OUTPUTSELECT
+reset => state.OUTPUTSELECT
+in => Selector0.IN1
+in => nextState.one.DATAB
+in => Selector1.IN2
+out <= out.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|proj|controlUnit:cU1
+clk => clk.IN1
+reset => reset.IN1
+auth_input[0] => auth_input[0].IN1
+auth_input[1] => auth_input[1].IN1
+auth_input[2] => auth_input[2].IN1
+auth_input[3] => auth_input[3].IN1
+auth_btn => auth_btn.IN1
+logged_out => logged_out.IN1
+ID_match <= authentication_FSM:AFSM1.ID_match
+PSWD_match <= authentication_FSM:AFSM1.PSWD_match
+display_data[0] <= authentication_FSM:AFSM1.display_data
+display_data[1] <= authentication_FSM:AFSM1.display_data
+display_data[2] <= authentication_FSM:AFSM1.display_data
+display_data[3] <= authentication_FSM:AFSM1.display_data
+logged_in <= <GND>
+
+
+|proj|controlUnit:cU1|authentication_FSM:AFSM1
+clk => clk.IN2
+reset => reset.IN2
+auth_input[0] => auth_input[0].IN2
+auth_input[1] => auth_input[1].IN2
+auth_input[2] => auth_input[2].IN2
+auth_input[3] => auth_input[3].IN2
+auth_btn => auth_btn.IN2
+logged_out => logged_out.IN1
+ID_match <= ID_passed.DB_MAX_OUTPUT_PORT_TYPE
+PSWD_match <= password_check:pc1.logged_in
+display_data[0] <= display_data.DB_MAX_OUTPUT_PORT_TYPE
+display_data[1] <= display_data.DB_MAX_OUTPUT_PORT_TYPE
+display_data[2] <= display_data.DB_MAX_OUTPUT_PORT_TYPE
+display_data[3] <= display_data.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|proj|controlUnit:cU1|authentication_FSM:AFSM1|ID_check:ic1
+clk => clk.IN1
+reset => always0.IN0
+id_input[0] => Equal0.IN3
+id_input[1] => Equal0.IN2
+id_input[2] => Equal0.IN1
+id_input[3] => Equal0.IN0
+auth_btn => Selector1.IN3
+auth_btn => Selector0.IN2
+logged_out => always0.IN1
+auth_passed <= auth_passed~reg0.DB_MAX_OUTPUT_PORT_TYPE
+display_data[0] <= display_data[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+display_data[1] <= display_data[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+display_data[2] <= display_data[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+display_data[3] <= display_data[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+internalID[0] <= internalID[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+internalID[1] <= internalID[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+internalID[2] <= internalID[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|proj|controlUnit:cU1|authentication_FSM:AFSM1|ID_check:ic1|ROM_ID:passwords
+address[0] => address[0].IN1
+address[1] => address[1].IN1
+address[2] => address[2].IN1
+address[3] => address[3].IN1
+address[4] => address[4].IN1
+address[5] => address[5].IN1
+clock => clock.IN1
+q[0] <= altsyncram:altsyncram_component.q_a
+q[1] <= altsyncram:altsyncram_component.q_a
+q[2] <= altsyncram:altsyncram_component.q_a
+q[3] <= altsyncram:altsyncram_component.q_a
+
+
+|proj|controlUnit:cU1|authentication_FSM:AFSM1|ID_check:ic1|ROM_ID:passwords|altsyncram:altsyncram_component
+wren_a => ~NO_FANOUT~
+rden_a => ~NO_FANOUT~
+wren_b => ~NO_FANOUT~
+rden_b => ~NO_FANOUT~
+data_a[0] => ~NO_FANOUT~
+data_a[1] => ~NO_FANOUT~
+data_a[2] => ~NO_FANOUT~
+data_a[3] => ~NO_FANOUT~
+data_b[0] => ~NO_FANOUT~
+address_a[0] => altsyncram_qcf1:auto_generated.address_a[0]
+address_a[1] => altsyncram_qcf1:auto_generated.address_a[1]
+address_a[2] => altsyncram_qcf1:auto_generated.address_a[2]
+address_a[3] => altsyncram_qcf1:auto_generated.address_a[3]
+address_a[4] => altsyncram_qcf1:auto_generated.address_a[4]
+address_a[5] => altsyncram_qcf1:auto_generated.address_a[5]
+address_b[0] => ~NO_FANOUT~
+addressstall_a => ~NO_FANOUT~
+addressstall_b => ~NO_FANOUT~
+clock0 => altsyncram_qcf1:auto_generated.clock0
+clock1 => ~NO_FANOUT~
+clocken0 => ~NO_FANOUT~
+clocken1 => ~NO_FANOUT~
+clocken2 => ~NO_FANOUT~
+clocken3 => ~NO_FANOUT~
+aclr0 => ~NO_FANOUT~
+aclr1 => ~NO_FANOUT~
+byteena_a[0] => ~NO_FANOUT~
+byteena_b[0] => ~NO_FANOUT~
+q_a[0] <= altsyncram_qcf1:auto_generated.q_a[0]
+q_a[1] <= altsyncram_qcf1:auto_generated.q_a[1]
+q_a[2] <= altsyncram_qcf1:auto_generated.q_a[2]
+q_a[3] <= altsyncram_qcf1:auto_generated.q_a[3]
+q_b[0] <= <GND>
+eccstatus[0] <= <GND>
+eccstatus[1] <= <GND>
+eccstatus[2] <= <GND>
+
+
+|proj|controlUnit:cU1|authentication_FSM:AFSM1|ID_check:ic1|ROM_ID:passwords|altsyncram:altsyncram_component|altsyncram_qcf1:auto_generated
+address_a[0] => ram_block1a0.PORTAADDR
+address_a[0] => ram_block1a1.PORTAADDR
+address_a[0] => ram_block1a2.PORTAADDR
+address_a[0] => ram_block1a3.PORTAADDR
+address_a[1] => ram_block1a0.PORTAADDR1
+address_a[1] => ram_block1a1.PORTAADDR1
+address_a[1] => ram_block1a2.PORTAADDR1
+address_a[1] => ram_block1a3.PORTAADDR1
+address_a[2] => ram_block1a0.PORTAADDR2
+address_a[2] => ram_block1a1.PORTAADDR2
+address_a[2] => ram_block1a2.PORTAADDR2
+address_a[2] => ram_block1a3.PORTAADDR2
+address_a[3] => ram_block1a0.PORTAADDR3
+address_a[3] => ram_block1a1.PORTAADDR3
+address_a[3] => ram_block1a2.PORTAADDR3
+address_a[3] => ram_block1a3.PORTAADDR3
+address_a[4] => ram_block1a0.PORTAADDR4
+address_a[4] => ram_block1a1.PORTAADDR4
+address_a[4] => ram_block1a2.PORTAADDR4
+address_a[4] => ram_block1a3.PORTAADDR4
+address_a[5] => ram_block1a0.PORTAADDR5
+address_a[5] => ram_block1a1.PORTAADDR5
+address_a[5] => ram_block1a2.PORTAADDR5
+address_a[5] => ram_block1a3.PORTAADDR5
+clock0 => ram_block1a0.CLK0
+clock0 => ram_block1a1.CLK0
+clock0 => ram_block1a2.CLK0
+clock0 => ram_block1a3.CLK0
+q_a[0] <= ram_block1a0.PORTADATAOUT
+q_a[1] <= ram_block1a1.PORTADATAOUT
+q_a[2] <= ram_block1a2.PORTADATAOUT
+q_a[3] <= ram_block1a3.PORTADATAOUT
+
+
+|proj|controlUnit:cU1|authentication_FSM:AFSM1|password_check:pc1
+clk => clk.IN1
+reset => always0.IN0
+pswd_btn_press => Selector1.IN2
+pswd_btn_press => Selector0.IN2
+internalID[0] => address.DATAA
+internalID[0] => Selector19.IN3
+internalID[0] => address.DATAB
+internalID[1] => address.DATAA
+internalID[1] => Selector18.IN3
+internalID[1] => address.DATAB
+internalID[2] => address.DATAA
+internalID[2] => Selector17.IN3
+internalID[2] => address.DATAB
+password_input[0] => Equal0.IN3
+password_input[1] => Equal0.IN2
+password_input[2] => Equal0.IN1
+password_input[3] => Equal0.IN0
+ID_check_passed => state.OUTPUTSELECT
+ID_check_passed => state.OUTPUTSELECT
+ID_check_passed => state.OUTPUTSELECT
+ID_check_passed => state.OUTPUTSELECT
+ID_check_passed => state.OUTPUTSELECT
+ID_check_passed => state.OUTPUTSELECT
+ID_check_passed => state.OUTPUTSELECT
+ID_check_passed => state.OUTPUTSELECT
+ID_check_passed => state.OUTPUTSELECT
+ID_check_passed => logged_in.OUTPUTSELECT
+ID_check_passed => count.OUTPUTSELECT
+ID_check_passed => count.OUTPUTSELECT
+ID_check_passed => count.OUTPUTSELECT
+ID_check_passed => correct_flag.OUTPUTSELECT
+ID_check_passed => display_data.OUTPUTSELECT
+ID_check_passed => display_data.OUTPUTSELECT
+ID_check_passed => display_data.OUTPUTSELECT
+ID_check_passed => display_data.OUTPUTSELECT
+ID_check_passed => address.OUTPUTSELECT
+ID_check_passed => address.OUTPUTSELECT
+ID_check_passed => address.OUTPUTSELECT
+ID_check_passed => address.OUTPUTSELECT
+ID_check_passed => address.OUTPUTSELECT
+ID_check_passed => address.OUTPUTSELECT
+ID_check_passed => address_val_stored.OUTPUTSELECT
+ID_check_passed => address_val_stored.OUTPUTSELECT
+ID_check_passed => address_val_stored.OUTPUTSELECT
+ID_check_passed => address_val_stored.OUTPUTSELECT
+ID_check_passed => always0.IN1
+logged_in <= logged_in~reg0.DB_MAX_OUTPUT_PORT_TYPE
+display_data[0] <= display_data[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+display_data[1] <= display_data[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+display_data[2] <= display_data[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+display_data[3] <= display_data[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|proj|controlUnit:cU1|authentication_FSM:AFSM1|password_check:pc1|ROM_PSWD:pswd_repo
+address[0] => address[0].IN1
+address[1] => address[1].IN1
+address[2] => address[2].IN1
+address[3] => address[3].IN1
+address[4] => address[4].IN1
+address[5] => address[5].IN1
+clock => clock.IN1
+q[0] <= altsyncram:altsyncram_component.q_a
+q[1] <= altsyncram:altsyncram_component.q_a
+q[2] <= altsyncram:altsyncram_component.q_a
+q[3] <= altsyncram:altsyncram_component.q_a
+
+
+|proj|controlUnit:cU1|authentication_FSM:AFSM1|password_check:pc1|ROM_PSWD:pswd_repo|altsyncram:altsyncram_component
+wren_a => ~NO_FANOUT~
+rden_a => ~NO_FANOUT~
+wren_b => ~NO_FANOUT~
+rden_b => ~NO_FANOUT~
+data_a[0] => ~NO_FANOUT~
+data_a[1] => ~NO_FANOUT~
+data_a[2] => ~NO_FANOUT~
+data_a[3] => ~NO_FANOUT~
+data_b[0] => ~NO_FANOUT~
+address_a[0] => altsyncram_bkf1:auto_generated.address_a[0]
+address_a[1] => altsyncram_bkf1:auto_generated.address_a[1]
+address_a[2] => altsyncram_bkf1:auto_generated.address_a[2]
+address_a[3] => altsyncram_bkf1:auto_generated.address_a[3]
+address_a[4] => altsyncram_bkf1:auto_generated.address_a[4]
+address_a[5] => altsyncram_bkf1:auto_generated.address_a[5]
+address_b[0] => ~NO_FANOUT~
+addressstall_a => ~NO_FANOUT~
+addressstall_b => ~NO_FANOUT~
+clock0 => altsyncram_bkf1:auto_generated.clock0
+clock1 => ~NO_FANOUT~
+clocken0 => ~NO_FANOUT~
+clocken1 => ~NO_FANOUT~
+clocken2 => ~NO_FANOUT~
+clocken3 => ~NO_FANOUT~
+aclr0 => ~NO_FANOUT~
+aclr1 => ~NO_FANOUT~
+byteena_a[0] => ~NO_FANOUT~
+byteena_b[0] => ~NO_FANOUT~
+q_a[0] <= altsyncram_bkf1:auto_generated.q_a[0]
+q_a[1] <= altsyncram_bkf1:auto_generated.q_a[1]
+q_a[2] <= altsyncram_bkf1:auto_generated.q_a[2]
+q_a[3] <= altsyncram_bkf1:auto_generated.q_a[3]
+q_b[0] <= <GND>
+eccstatus[0] <= <GND>
+eccstatus[1] <= <GND>
+eccstatus[2] <= <GND>
+
+
+|proj|controlUnit:cU1|authentication_FSM:AFSM1|password_check:pc1|ROM_PSWD:pswd_repo|altsyncram:altsyncram_component|altsyncram_bkf1:auto_generated
+address_a[0] => ram_block1a0.PORTAADDR
+address_a[0] => ram_block1a1.PORTAADDR
+address_a[0] => ram_block1a2.PORTAADDR
+address_a[0] => ram_block1a3.PORTAADDR
+address_a[1] => ram_block1a0.PORTAADDR1
+address_a[1] => ram_block1a1.PORTAADDR1
+address_a[1] => ram_block1a2.PORTAADDR1
+address_a[1] => ram_block1a3.PORTAADDR1
+address_a[2] => ram_block1a0.PORTAADDR2
+address_a[2] => ram_block1a1.PORTAADDR2
+address_a[2] => ram_block1a2.PORTAADDR2
+address_a[2] => ram_block1a3.PORTAADDR2
+address_a[3] => ram_block1a0.PORTAADDR3
+address_a[3] => ram_block1a1.PORTAADDR3
+address_a[3] => ram_block1a2.PORTAADDR3
+address_a[3] => ram_block1a3.PORTAADDR3
+address_a[4] => ram_block1a0.PORTAADDR4
+address_a[4] => ram_block1a1.PORTAADDR4
+address_a[4] => ram_block1a2.PORTAADDR4
+address_a[4] => ram_block1a3.PORTAADDR4
+address_a[5] => ram_block1a0.PORTAADDR5
+address_a[5] => ram_block1a1.PORTAADDR5
+address_a[5] => ram_block1a2.PORTAADDR5
+address_a[5] => ram_block1a3.PORTAADDR5
+clock0 => ram_block1a0.CLK0
+clock0 => ram_block1a1.CLK0
+clock0 => ram_block1a2.CLK0
+clock0 => ram_block1a3.CLK0
+q_a[0] <= ram_block1a0.PORTADATAOUT
+q_a[1] <= ram_block1a1.PORTADATAOUT
+q_a[2] <= ram_block1a2.PORTADATAOUT
+q_a[3] <= ram_block1a3.PORTADATAOUT
+
+
+|proj|decoder7Segment:auth_index
+game_data_to_decode[0] => Decoder0.IN3
+game_data_to_decode[1] => Decoder0.IN2
+game_data_to_decode[2] => Decoder0.IN1
+game_data_to_decode[3] => Decoder0.IN0
+seven_segment_data[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+seven_segment_data[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+seven_segment_data[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+seven_segment_data[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+seven_segment_data[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+seven_segment_data[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+seven_segment_data[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|proj|decoder7Segment:player
+game_data_to_decode[0] => Decoder0.IN3
+game_data_to_decode[1] => Decoder0.IN2
+game_data_to_decode[2] => Decoder0.IN1
+game_data_to_decode[3] => Decoder0.IN0
+seven_segment_data[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+seven_segment_data[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+seven_segment_data[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+seven_segment_data[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+seven_segment_data[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+seven_segment_data[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+seven_segment_data[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|proj|display_manager:dm1
+logged_in => hex2_display.OUTPUTSELECT
+logged_in => hex2_display.OUTPUTSELECT
+logged_in => hex2_display.OUTPUTSELECT
+logged_in => hex2_display.OUTPUTSELECT
+logged_in => hex2_display.OUTPUTSELECT
+logged_in => hex2_display.OUTPUTSELECT
+logged_in => hex2_display.OUTPUTSELECT
+player_input_decoded[0] => hex2_display.DATAB
+player_input_decoded[1] => hex2_display.DATAB
+player_input_decoded[2] => hex2_display.DATAB
+player_input_decoded[3] => hex2_display.DATAB
+player_input_decoded[4] => hex2_display.DATAB
+player_input_decoded[5] => hex2_display.DATAB
+player_input_decoded[6] => hex2_display.DATAB
+authenticationFSM_index[0] => hex2_display.DATAA
+authenticationFSM_index[1] => hex2_display.DATAA
+authenticationFSM_index[2] => hex2_display.DATAA
+authenticationFSM_index[3] => hex2_display.DATAA
+authenticationFSM_index[4] => hex2_display.DATAA
+authenticationFSM_index[5] => hex2_display.DATAA
+authenticationFSM_index[6] => hex2_display.DATAA
+hex5_display[0] <= <VCC>
+hex5_display[1] <= <VCC>
+hex5_display[2] <= <VCC>
+hex5_display[3] <= <VCC>
+hex5_display[4] <= <VCC>
+hex5_display[5] <= <VCC>
+hex5_display[6] <= <VCC>
+hex4_display[0] <= <VCC>
+hex4_display[1] <= <VCC>
+hex4_display[2] <= <VCC>
+hex4_display[3] <= <VCC>
+hex4_display[4] <= <VCC>
+hex4_display[5] <= <VCC>
+hex4_display[6] <= <VCC>
+hex3_display[0] <= <VCC>
+hex3_display[1] <= <VCC>
+hex3_display[2] <= <VCC>
+hex3_display[3] <= <VCC>
+hex3_display[4] <= <VCC>
+hex3_display[5] <= <VCC>
+hex3_display[6] <= <VCC>
+hex2_display[0] <= hex2_display.DB_MAX_OUTPUT_PORT_TYPE
+hex2_display[1] <= hex2_display.DB_MAX_OUTPUT_PORT_TYPE
+hex2_display[2] <= hex2_display.DB_MAX_OUTPUT_PORT_TYPE
+hex2_display[3] <= hex2_display.DB_MAX_OUTPUT_PORT_TYPE
+hex2_display[4] <= hex2_display.DB_MAX_OUTPUT_PORT_TYPE
+hex2_display[5] <= hex2_display.DB_MAX_OUTPUT_PORT_TYPE
+hex2_display[6] <= hex2_display.DB_MAX_OUTPUT_PORT_TYPE
+hex1_display[0] <= <VCC>
+hex1_display[1] <= <VCC>
+hex1_display[2] <= <VCC>
+hex1_display[3] <= <VCC>
+hex1_display[4] <= <VCC>
+hex1_display[5] <= <VCC>
+hex1_display[6] <= <VCC>
+hex0_display[0] <= <VCC>
+hex0_display[1] <= <VCC>
+hex0_display[2] <= <VCC>
+hex0_display[3] <= <VCC>
+hex0_display[4] <= <VCC>
+hex0_display[5] <= <VCC>
+hex0_display[6] <= <VCC>
+
+

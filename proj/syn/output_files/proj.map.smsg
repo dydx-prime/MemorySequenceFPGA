@@ -1,0 +1,1 @@
+Warning (10268): Verilog HDL information at password_check.v(31): always construct contains both blocking and non-blocking assignments File: C:/ADD_labs/proj/src/password_check.v Line: 31

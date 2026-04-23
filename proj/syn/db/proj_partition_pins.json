@@ -1,0 +1,93 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "ID_passed",
+					"strict" : false
+				},
+				{
+					"name" : "password_passed",
+					"strict" : false
+				},
+				{
+					"name" : "hex2_display[0]",
+					"strict" : false
+				},
+				{
+					"name" : "hex2_display[1]",
+					"strict" : false
+				},
+				{
+					"name" : "hex2_display[2]",
+					"strict" : false
+				},
+				{
+					"name" : "hex2_display[3]",
+					"strict" : false
+				},
+				{
+					"name" : "hex2_display[4]",
+					"strict" : false
+				},
+				{
+					"name" : "hex2_display[5]",
+					"strict" : false
+				},
+				{
+					"name" : "hex2_display[6]",
+					"strict" : false
+				},
+				{
+					"name" : "player_input[0]",
+					"strict" : false
+				},
+				{
+					"name" : "player_input[1]",
+					"strict" : false
+				},
+				{
+					"name" : "player_input[2]",
+					"strict" : false
+				},
+				{
+					"name" : "player_input[3]",
+					"strict" : false
+				},
+				{
+					"name" : "reset",
+					"strict" : false
+				},
+				{
+					"name" : "logged_out",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
+					"strict" : false
+				},
+				{
+					"name" : "id_input[0]",
+					"strict" : false
+				},
+				{
+					"name" : "id_input[1]",
+					"strict" : false
+				},
+				{
+					"name" : "id_input[2]",
+					"strict" : false
+				},
+				{
+					"name" : "id_input[3]",
+					"strict" : false
+				},
+				{
+					"name" : "auth_button",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

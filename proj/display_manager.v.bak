@@ -1,0 +1,26 @@
+// ECE 5440
+// Author: Juan Aguilar, 1246
+// display_manager
+// A partial control unit that displays the authentication arrangement vs the authenticated arrangement
+// Any comments and log
+module display_manager(
+    input logged_in, 
+    input [6:0] player1_decoded, 
+    input [6:0] control_unit_index,
+
+    output reg [6:0] player1_display,
+    output reg [6:0] sum_display
+);
+
+    always@(*)begin
+        if(logged_in) begin
+            player1_display = player1_decoded;
+            sum_display = sum_decoded;
+        end
+        else begin
+            sum_display = control_unit_index;
+			player1_display = 7'b1000000;
+        end
+    end
+
+endmodule

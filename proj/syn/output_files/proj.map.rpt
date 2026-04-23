@@ -1,0 +1,840 @@
+Analysis & Synthesis report for proj
+Thu Apr 23 01:51:53 2026
+Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis RAM Summary
+  9. Analysis & Synthesis IP Cores Summary
+ 10. State Machine - |proj|controlUnit:cU1|authentication_FSM:AFSM1|password_check:pc1|state
+ 11. State Machine - |proj|controlUnit:cU1|authentication_FSM:AFSM1|ID_check:ic1|state
+ 12. State Machine - |proj|button_shaper:start_game_player_load|state
+ 13. State Machine - |proj|button_shaper:authentication|state
+ 14. Registers Removed During Synthesis
+ 15. General Register Statistics
+ 16. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 17. Source assignments for controlUnit:cU1|authentication_FSM:AFSM1|ID_check:ic1|ROM_ID:passwords|altsyncram:altsyncram_component|altsyncram_qcf1:auto_generated
+ 18. Source assignments for controlUnit:cU1|authentication_FSM:AFSM1|password_check:pc1|ROM_PSWD:pswd_repo|altsyncram:altsyncram_component|altsyncram_bkf1:auto_generated
+ 19. Parameter Settings for User Entity Instance: button_shaper:authentication
+ 20. Parameter Settings for User Entity Instance: button_shaper:start_game_player_load
+ 21. Parameter Settings for User Entity Instance: controlUnit:cU1|authentication_FSM:AFSM1|ID_check:ic1
+ 22. Parameter Settings for User Entity Instance: controlUnit:cU1|authentication_FSM:AFSM1|ID_check:ic1|ROM_ID:passwords|altsyncram:altsyncram_component
+ 23. Parameter Settings for User Entity Instance: controlUnit:cU1|authentication_FSM:AFSM1|password_check:pc1
+ 24. Parameter Settings for User Entity Instance: controlUnit:cU1|authentication_FSM:AFSM1|password_check:pc1|ROM_PSWD:pswd_repo|altsyncram:altsyncram_component
+ 25. altsyncram Parameter Settings by Entity Instance
+ 26. Port Connectivity Checks: "controlUnit:cU1"
+ 27. Port Connectivity Checks: "button_shaper:start_game_player_load"
+ 28. Post-Synthesis Netlist Statistics for Top Partition
+ 29. Elapsed Time Per Partition
+ 30. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2025  Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Altera and sold by Altera or its authorized distributors.  Please
+refer to the Altera Software License Subscription Agreements 
+on the Quartus Prime software download page.
+
+
+
++-----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                      ;
++---------------------------------+-------------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Thu Apr 23 01:51:53 2026           ;
+; Quartus Prime Version           ; 25.1std.0 Build 1129 10/21/2025 SC Lite Edition ;
+; Revision Name                   ; proj                                            ;
+; Top-level Entity Name           ; proj                                            ;
+; Family                          ; Cyclone V                                       ;
+; Logic utilization (in ALMs)     ; N/A                                             ;
+; Total registers                 ; 61                                              ;
+; Total pins                      ; 57                                              ;
+; Total virtual pins              ; 0                                               ;
+; Total block memory bits         ; 512                                             ;
+; Total DSP Blocks                ; 0                                               ;
+; Total HSSI RX PCSs              ; 0                                               ;
+; Total HSSI PMA RX Deserializers ; 0                                               ;
+; Total HSSI TX PCSs              ; 0                                               ;
+; Total HSSI PMA TX Serializers   ; 0                                               ;
+; Total PLLs                      ; 0                                               ;
+; Total DLLs                      ; 0                                               ;
++---------------------------------+-------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CEBA4F23C7        ;                    ;
+; Top-level entity name                                                           ; proj               ; proj               ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 8           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 8           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processors 2-8         ;   0.0%      ;
++----------------------------+-------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                              ;
++----------------------------------+-----------------+---------------------------------------+------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                             ; File Name with Absolute Path                                                 ; Library ;
++----------------------------------+-----------------+---------------------------------------+------------------------------------------------------------------------------+---------+
+; ../src/password_check.v          ; yes             ; User Verilog HDL File                 ; C:/ADD_labs/proj/src/password_check.v                                        ;         ;
+; ../src/proj.v                    ; yes             ; User Verilog HDL File                 ; C:/ADD_labs/proj/src/proj.v                                                  ;         ;
+; ../src/ID_check.v                ; yes             ; User Verilog HDL File                 ; C:/ADD_labs/proj/src/ID_check.v                                              ;         ;
+; ../src/display_manager.v         ; yes             ; User Verilog HDL File                 ; C:/ADD_labs/proj/src/display_manager.v                                       ;         ;
+; ../src/decoder7Segment.v         ; yes             ; User Verilog HDL File                 ; C:/ADD_labs/proj/src/decoder7Segment.v                                       ;         ;
+; ../src/controlUnit.v             ; yes             ; User Verilog HDL File                 ; C:/ADD_labs/proj/src/controlUnit.v                                           ;         ;
+; ../src/button_shaper.v           ; yes             ; User Verilog HDL File                 ; C:/ADD_labs/proj/src/button_shaper.v                                         ;         ;
+; ../src/authentication_FSM.v      ; yes             ; User Verilog HDL File                 ; C:/ADD_labs/proj/src/authentication_FSM.v                                    ;         ;
+; ROM_PSWD.hex                     ; yes             ; User Hexadecimal (Intel-Format) File  ; C:/ADD_labs/proj/syn/ROM_PSWD.hex                                            ;         ;
+; ROM_PSWD.v                       ; yes             ; User Wizard-Generated File            ; C:/ADD_labs/proj/syn/ROM_PSWD.v                                              ;         ;
+; ROM_ID.hex                       ; yes             ; User Hexadecimal (Intel-Format) File  ; C:/ADD_labs/proj/syn/ROM_ID.hex                                              ;         ;
+; ROM_ID.v                         ; yes             ; User Wizard-Generated File            ; C:/ADD_labs/proj/syn/ROM_ID.v                                                ;         ;
+; altsyncram.tdf                   ; yes             ; Megafunction                          ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/altsyncram.tdf        ;         ;
+; stratix_ram_block.inc            ; yes             ; Megafunction                          ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/stratix_ram_block.inc ;         ;
+; lpm_mux.inc                      ; yes             ; Megafunction                          ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/lpm_mux.inc           ;         ;
+; lpm_decode.inc                   ; yes             ; Megafunction                          ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/lpm_decode.inc        ;         ;
+; aglobal251.inc                   ; yes             ; Megafunction                          ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/aglobal251.inc        ;         ;
+; a_rdenreg.inc                    ; yes             ; Megafunction                          ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/a_rdenreg.inc         ;         ;
+; altrom.inc                       ; yes             ; Megafunction                          ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/altrom.inc            ;         ;
+; altram.inc                       ; yes             ; Megafunction                          ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/altram.inc            ;         ;
+; altdpram.inc                     ; yes             ; Megafunction                          ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/altdpram.inc          ;         ;
+; db/altsyncram_qcf1.tdf           ; yes             ; Auto-Generated Megafunction           ; C:/ADD_labs/proj/syn/db/altsyncram_qcf1.tdf                                  ;         ;
+; db/altsyncram_bkf1.tdf           ; yes             ; Auto-Generated Megafunction           ; C:/ADD_labs/proj/syn/db/altsyncram_bkf1.tdf                                  ;         ;
++----------------------------------+-----------------+---------------------------------------+------------------------------------------------------------------------------+---------+
+
+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimate of Logic utilization (ALMs needed) ; 75        ;
+;                                             ;           ;
+; Combinational ALUT usage for logic          ; 108       ;
+;     -- 7 input functions                    ; 1         ;
+;     -- 6 input functions                    ; 39        ;
+;     -- 5 input functions                    ; 19        ;
+;     -- 4 input functions                    ; 22        ;
+;     -- <=3 input functions                  ; 27        ;
+;                                             ;           ;
+; Dedicated logic registers                   ; 61        ;
+;                                             ;           ;
+; I/O pins                                    ; 57        ;
+; Total MLAB memory bits                      ; 0         ;
+; Total block memory bits                     ; 512       ;
+;                                             ;           ;
+; Total DSP Blocks                            ; 0         ;
+;                                             ;           ;
+; Maximum fan-out node                        ; clk~input ;
+; Maximum fan-out                             ; 69        ;
+; Total fan-out                               ; 772       ;
+; Average fan-out                             ; 2.65      ;
++---------------------------------------------+-----------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                                                   ;
++----------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+--------------------+--------------+
+; Compilation Hierarchy Node                         ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                 ; Entity Name        ; Library Name ;
++----------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+--------------------+--------------+
+; |proj                                              ; 108 (1)             ; 61 (0)                    ; 512               ; 0          ; 57   ; 0            ; |proj                                                                                                                                               ; proj               ; work         ;
+;    |button_shaper:authentication|                  ; 2 (2)               ; 2 (2)                     ; 0                 ; 0          ; 0    ; 0            ; |proj|button_shaper:authentication                                                                                                                  ; button_shaper      ; work         ;
+;    |controlUnit:cU1|                               ; 91 (0)              ; 59 (0)                    ; 512               ; 0          ; 0    ; 0            ; |proj|controlUnit:cU1                                                                                                                               ; controlUnit        ; work         ;
+;       |authentication_FSM:AFSM1|                   ; 91 (4)              ; 59 (0)                    ; 512               ; 0          ; 0    ; 0            ; |proj|controlUnit:cU1|authentication_FSM:AFSM1                                                                                                      ; authentication_FSM ; work         ;
+;          |ID_check:ic1|                            ; 53 (53)             ; 31 (31)                   ; 256               ; 0          ; 0    ; 0            ; |proj|controlUnit:cU1|authentication_FSM:AFSM1|ID_check:ic1                                                                                         ; ID_check           ; work         ;
+;             |ROM_ID:passwords|                     ; 0 (0)               ; 0 (0)                     ; 256               ; 0          ; 0    ; 0            ; |proj|controlUnit:cU1|authentication_FSM:AFSM1|ID_check:ic1|ROM_ID:passwords                                                                        ; ROM_ID             ; work         ;
+;                |altsyncram:altsyncram_component|   ; 0 (0)               ; 0 (0)                     ; 256               ; 0          ; 0    ; 0            ; |proj|controlUnit:cU1|authentication_FSM:AFSM1|ID_check:ic1|ROM_ID:passwords|altsyncram:altsyncram_component                                        ; altsyncram         ; work         ;
+;                   |altsyncram_qcf1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 256               ; 0          ; 0    ; 0            ; |proj|controlUnit:cU1|authentication_FSM:AFSM1|ID_check:ic1|ROM_ID:passwords|altsyncram:altsyncram_component|altsyncram_qcf1:auto_generated         ; altsyncram_qcf1    ; work         ;
+;          |password_check:pc1|                      ; 34 (34)             ; 28 (28)                   ; 256               ; 0          ; 0    ; 0            ; |proj|controlUnit:cU1|authentication_FSM:AFSM1|password_check:pc1                                                                                   ; password_check     ; work         ;
+;             |ROM_PSWD:pswd_repo|                   ; 0 (0)               ; 0 (0)                     ; 256               ; 0          ; 0    ; 0            ; |proj|controlUnit:cU1|authentication_FSM:AFSM1|password_check:pc1|ROM_PSWD:pswd_repo                                                                ; ROM_PSWD           ; work         ;
+;                |altsyncram:altsyncram_component|   ; 0 (0)               ; 0 (0)                     ; 256               ; 0          ; 0    ; 0            ; |proj|controlUnit:cU1|authentication_FSM:AFSM1|password_check:pc1|ROM_PSWD:pswd_repo|altsyncram:altsyncram_component                                ; altsyncram         ; work         ;
+;                   |altsyncram_bkf1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 256               ; 0          ; 0    ; 0            ; |proj|controlUnit:cU1|authentication_FSM:AFSM1|password_check:pc1|ROM_PSWD:pswd_repo|altsyncram:altsyncram_component|altsyncram_bkf1:auto_generated ; altsyncram_bkf1    ; work         ;
+;    |decoder7Segment:auth_index|                    ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |proj|decoder7Segment:auth_index                                                                                                                    ; decoder7Segment    ; work         ;
+;    |display_manager:dm1|                           ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |proj|display_manager:dm1                                                                                                                           ; display_manager    ; work         ;
++----------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+--------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                                                                                         ;
++----------------------------------------------------------------------------------------------------------------------------------------------------------+------+------+--------------+--------------+--------------+--------------+------+--------------+
+; Name                                                                                                                                                     ; Type ; Mode ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size ; MIF          ;
++----------------------------------------------------------------------------------------------------------------------------------------------------------+------+------+--------------+--------------+--------------+--------------+------+--------------+
+; controlUnit:cU1|authentication_FSM:AFSM1|ID_check:ic1|ROM_ID:passwords|altsyncram:altsyncram_component|altsyncram_qcf1:auto_generated|ALTSYNCRAM         ; AUTO ; ROM  ; 64           ; 4            ; --           ; --           ; 256  ; ROM_ID.hex   ;
+; controlUnit:cU1|authentication_FSM:AFSM1|password_check:pc1|ROM_PSWD:pswd_repo|altsyncram:altsyncram_component|altsyncram_bkf1:auto_generated|ALTSYNCRAM ; AUTO ; ROM  ; 64           ; 4            ; --           ; --           ; 256  ; ROM_PSWD.hex ;
++----------------------------------------------------------------------------------------------------------------------------------------------------------+------+------+--------------+--------------+--------------+--------------+------+--------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis IP Cores Summary                                                                                                                                  ;
++--------+--------------+---------+--------------+--------------+--------------------------------------------------------------------------------------+-----------------+
+; Vendor ; IP Core Name ; Version ; Release Date ; License Type ; Entity Instance                                                                      ; IP Include File ;
++--------+--------------+---------+--------------+--------------+--------------------------------------------------------------------------------------+-----------------+
+; Altera ; ROM: 1-PORT  ; 25.1    ; N/A          ; N/A          ; |proj|controlUnit:cU1|authentication_FSM:AFSM1|ID_check:ic1|ROM_ID:passwords         ; ROM_ID.v        ;
+; Altera ; ROM: 1-PORT  ; 25.1    ; N/A          ; N/A          ; |proj|controlUnit:cU1|authentication_FSM:AFSM1|password_check:pc1|ROM_PSWD:pswd_repo ; ROM_PSWD.v      ;
++--------+--------------+---------+--------------+--------------+--------------------------------------------------------------------------------------+-----------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |proj|controlUnit:cU1|authentication_FSM:AFSM1|password_check:pc1|state                                                                                     ;
++-----------------------+-----------------------+---------------+--------------+---------------+-----------------+--------------+--------------+-----------------+------------+
+; Name                  ; state.check_btn_press ; state.success ; state.verify ; state.compare ; state.ROM_catch ; state.cycle2 ; state.cycle1 ; state.ROM_fetch ; state.init ;
++-----------------------+-----------------------+---------------+--------------+---------------+-----------------+--------------+--------------+-----------------+------------+
+; state.init            ; 0                     ; 0             ; 0            ; 0             ; 0               ; 0            ; 0            ; 0               ; 0          ;
+; state.ROM_fetch       ; 0                     ; 0             ; 0            ; 0             ; 0               ; 0            ; 0            ; 1               ; 1          ;
+; state.cycle1          ; 0                     ; 0             ; 0            ; 0             ; 0               ; 0            ; 1            ; 0               ; 1          ;
+; state.cycle2          ; 0                     ; 0             ; 0            ; 0             ; 0               ; 1            ; 0            ; 0               ; 1          ;
+; state.ROM_catch       ; 0                     ; 0             ; 0            ; 0             ; 1               ; 0            ; 0            ; 0               ; 1          ;
+; state.compare         ; 0                     ; 0             ; 0            ; 1             ; 0               ; 0            ; 0            ; 0               ; 1          ;
+; state.verify          ; 0                     ; 0             ; 1            ; 0             ; 0               ; 0            ; 0            ; 0               ; 1          ;
+; state.success         ; 0                     ; 1             ; 0            ; 0             ; 0               ; 0            ; 0            ; 0               ; 1          ;
+; state.check_btn_press ; 1                     ; 0             ; 0            ; 0             ; 0               ; 0            ; 0            ; 0               ; 1          ;
++-----------------------+-----------------------+---------------+--------------+---------------+-----------------+--------------+--------------+-----------------+------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |proj|controlUnit:cU1|authentication_FSM:AFSM1|ID_check:ic1|state                                                                                           ;
++-----------------------+-----------------------+---------------+--------------+---------------+-----------------+--------------+--------------+-----------------+------------+
+; Name                  ; state.check_btn_press ; state.success ; state.verify ; state.compare ; state.ROM_catch ; state.cycle2 ; state.cycle1 ; state.ROM_fetch ; state.init ;
++-----------------------+-----------------------+---------------+--------------+---------------+-----------------+--------------+--------------+-----------------+------------+
+; state.init            ; 0                     ; 0             ; 0            ; 0             ; 0               ; 0            ; 0            ; 0               ; 0          ;
+; state.ROM_fetch       ; 0                     ; 0             ; 0            ; 0             ; 0               ; 0            ; 0            ; 1               ; 1          ;
+; state.cycle1          ; 0                     ; 0             ; 0            ; 0             ; 0               ; 0            ; 1            ; 0               ; 1          ;
+; state.cycle2          ; 0                     ; 0             ; 0            ; 0             ; 0               ; 1            ; 0            ; 0               ; 1          ;
+; state.ROM_catch       ; 0                     ; 0             ; 0            ; 0             ; 1               ; 0            ; 0            ; 0               ; 1          ;
+; state.compare         ; 0                     ; 0             ; 0            ; 1             ; 0               ; 0            ; 0            ; 0               ; 1          ;
+; state.verify          ; 0                     ; 0             ; 1            ; 0             ; 0               ; 0            ; 0            ; 0               ; 1          ;
+; state.success         ; 0                     ; 1             ; 0            ; 0             ; 0               ; 0            ; 0            ; 0               ; 1          ;
+; state.check_btn_press ; 1                     ; 0             ; 0            ; 0             ; 0               ; 0            ; 0            ; 0               ; 1          ;
++-----------------------+-----------------------+---------------+--------------+---------------+-----------------+--------------+--------------+-----------------+------------+
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------+
+; State Machine - |proj|button_shaper:start_game_player_load|state ;
++------------+------------+-----------+----------------------------+
+; Name       ; state.zero ; state.two ; state.one                  ;
++------------+------------+-----------+----------------------------+
+; state.zero ; 0          ; 0         ; 0                          ;
+; state.one  ; 1          ; 0         ; 1                          ;
+; state.two  ; 1          ; 1         ; 0                          ;
++------------+------------+-----------+----------------------------+
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------+
+; State Machine - |proj|button_shaper:authentication|state ;
++------------+------------+-----------+--------------------+
+; Name       ; state.zero ; state.two ; state.one          ;
++------------+------------+-----------+--------------------+
+; state.zero ; 0          ; 0         ; 0                  ;
+; state.one  ; 1          ; 0         ; 1                  ;
+; state.two  ; 1          ; 1         ; 0                  ;
++------------+------------+-----------+--------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                                                    ;
++------------------------------------------------------------------------+------------------------------------------------------------------------------+
+; Register name                                                          ; Reason for Removal                                                           ;
++------------------------------------------------------------------------+------------------------------------------------------------------------------+
+; controlUnit:cU1|authentication_FSM:AFSM1|ID_check:ic1|address_index[2] ; Merged with controlUnit:cU1|authentication_FSM:AFSM1|ID_check:ic1|address[5] ;
+; controlUnit:cU1|authentication_FSM:AFSM1|ID_check:ic1|address_index[0] ; Merged with controlUnit:cU1|authentication_FSM:AFSM1|ID_check:ic1|address[3] ;
+; controlUnit:cU1|authentication_FSM:AFSM1|ID_check:ic1|address_index[1] ; Merged with controlUnit:cU1|authentication_FSM:AFSM1|ID_check:ic1|address[4] ;
+; controlUnit:cU1|authentication_FSM:AFSM1|ID_check:ic1|count[1]         ; Merged with controlUnit:cU1|authentication_FSM:AFSM1|ID_check:ic1|address[1] ;
+; controlUnit:cU1|authentication_FSM:AFSM1|ID_check:ic1|count[0]         ; Merged with controlUnit:cU1|authentication_FSM:AFSM1|ID_check:ic1|address[0] ;
+; controlUnit:cU1|authentication_FSM:AFSM1|ID_check:ic1|display_data[3]  ; Stuck at GND due to stuck port data_in                                       ;
+; controlUnit:cU1|authentication_FSM:AFSM1|ID_check:ic1|address[2]       ; Stuck at GND due to stuck port data_in                                       ;
+; controlUnit:cU1|authentication_FSM:AFSM1|password_check:pc1|state~2    ; Lost fanout                                                                  ;
+; controlUnit:cU1|authentication_FSM:AFSM1|password_check:pc1|state~3    ; Lost fanout                                                                  ;
+; controlUnit:cU1|authentication_FSM:AFSM1|password_check:pc1|state~4    ; Lost fanout                                                                  ;
+; controlUnit:cU1|authentication_FSM:AFSM1|password_check:pc1|state~6    ; Lost fanout                                                                  ;
+; controlUnit:cU1|authentication_FSM:AFSM1|ID_check:ic1|state~2          ; Lost fanout                                                                  ;
+; controlUnit:cU1|authentication_FSM:AFSM1|ID_check:ic1|state~3          ; Lost fanout                                                                  ;
+; controlUnit:cU1|authentication_FSM:AFSM1|ID_check:ic1|state~4          ; Lost fanout                                                                  ;
+; controlUnit:cU1|authentication_FSM:AFSM1|ID_check:ic1|state~6          ; Lost fanout                                                                  ;
+; button_shaper:start_game_player_load|state~4                           ; Lost fanout                                                                  ;
+; button_shaper:authentication|state~4                                   ; Lost fanout                                                                  ;
+; button_shaper:start_game_player_load|state.one                         ; Lost fanout                                                                  ;
+; button_shaper:start_game_player_load|state.two                         ; Lost fanout                                                                  ;
+; button_shaper:start_game_player_load|state.zero                        ; Lost fanout                                                                  ;
+; button_shaper:authentication|state.two                                 ; Lost fanout                                                                  ;
+; Total Number of Removed Registers = 21                                 ;                                                                              ;
++------------------------------------------------------------------------+------------------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 61    ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 29    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                                  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                        ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------------+
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |proj|controlUnit:cU1|authentication_FSM:AFSM1|ID_check:ic1|internalID[1]         ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |proj|controlUnit:cU1|authentication_FSM:AFSM1|ID_check:ic1|display_data[2]       ;
+; 7:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |proj|controlUnit:cU1|authentication_FSM:AFSM1|password_check:pc1|display_data[2] ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |proj|controlUnit:cU1|authentication_FSM:AFSM1|ID_check:ic1|address[1]            ;
+; 8:1                ; 3 bits    ; 15 LEs        ; 3 LEs                ; 12 LEs                 ; Yes        ; |proj|controlUnit:cU1|authentication_FSM:AFSM1|password_check:pc1|address[3]      ;
+; 8:1                ; 6 bits    ; 30 LEs        ; 12 LEs               ; 18 LEs                 ; Yes        ; |proj|controlUnit:cU1|authentication_FSM:AFSM1|password_check:pc1|count[2]        ;
+; 8:1                ; 3 bits    ; 15 LEs        ; 9 LEs                ; 6 LEs                  ; Yes        ; |proj|controlUnit:cU1|authentication_FSM:AFSM1|ID_check:ic1|address[3]            ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |proj|controlUnit:cU1|authentication_FSM:AFSM1|password_check:pc1|state           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Source assignments for controlUnit:cU1|authentication_FSM:AFSM1|ID_check:ic1|ROM_ID:passwords|altsyncram:altsyncram_component|altsyncram_qcf1:auto_generated ;
++---------------------------------+--------------------+------+------------------------------------------------------------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                                                                             ;
++---------------------------------+--------------------+------+------------------------------------------------------------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                                                              ;
++---------------------------------+--------------------+------+------------------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Source assignments for controlUnit:cU1|authentication_FSM:AFSM1|password_check:pc1|ROM_PSWD:pswd_repo|altsyncram:altsyncram_component|altsyncram_bkf1:auto_generated ;
++---------------------------------+--------------------+------+--------------------------------------------------------------------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                                                                                     ;
++---------------------------------+--------------------+------+--------------------------------------------------------------------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                                                                      ;
++---------------------------------+--------------------+------+--------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: button_shaper:authentication ;
++----------------+-------+--------------------------------------------------+
+; Parameter Name ; Value ; Type                                             ;
++----------------+-------+--------------------------------------------------+
+; zero           ; 0     ; Signed Integer                                   ;
+; one            ; 1     ; Signed Integer                                   ;
+; two            ; 2     ; Signed Integer                                   ;
++----------------+-------+--------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: button_shaper:start_game_player_load ;
++----------------+-------+----------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                     ;
++----------------+-------+----------------------------------------------------------+
+; zero           ; 0     ; Signed Integer                                           ;
+; one            ; 1     ; Signed Integer                                           ;
+; two            ; 2     ; Signed Integer                                           ;
++----------------+-------+----------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: controlUnit:cU1|authentication_FSM:AFSM1|ID_check:ic1 ;
++-----------------+-------+--------------------------------------------------------------------------+
+; Parameter Name  ; Value ; Type                                                                     ;
++-----------------+-------+--------------------------------------------------------------------------+
+; check_btn_press ; 0     ; Signed Integer                                                           ;
+; ROM_fetch       ; 1     ; Signed Integer                                                           ;
+; cycle1          ; 2     ; Signed Integer                                                           ;
+; cycle2          ; 3     ; Signed Integer                                                           ;
+; ROM_catch       ; 4     ; Signed Integer                                                           ;
+; compare         ; 5     ; Signed Integer                                                           ;
+; verify          ; 6     ; Signed Integer                                                           ;
+; success         ; 7     ; Signed Integer                                                           ;
+; init            ; 8     ; Signed Integer                                                           ;
++-----------------+-------+--------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: controlUnit:cU1|authentication_FSM:AFSM1|ID_check:ic1|ROM_ID:passwords|altsyncram:altsyncram_component ;
++------------------------------------+----------------------+-----------------------------------------------------------------------------------------+
+; Parameter Name                     ; Value                ; Type                                                                                    ;
++------------------------------------+----------------------+-----------------------------------------------------------------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                                                                                 ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                                                                              ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                                                                            ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                                                                            ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                                                                          ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                                                                                 ;
+; OPERATION_MODE                     ; ROM                  ; Untyped                                                                                 ;
+; WIDTH_A                            ; 4                    ; Signed Integer                                                                          ;
+; WIDTHAD_A                          ; 6                    ; Signed Integer                                                                          ;
+; NUMWORDS_A                         ; 64                   ; Signed Integer                                                                          ;
+; OUTDATA_REG_A                      ; CLOCK0               ; Untyped                                                                                 ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                                                                                 ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                                                                                 ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                                                                                 ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                                                                                 ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                                                                                 ;
+; WIDTH_B                            ; 1                    ; Untyped                                                                                 ;
+; WIDTHAD_B                          ; 1                    ; Untyped                                                                                 ;
+; NUMWORDS_B                         ; 1                    ; Untyped                                                                                 ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                                                                                 ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                                                                                 ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                                                                                 ;
+; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                                                                                 ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                                                                                 ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                                                                                 ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                                                                                 ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                                                                                 ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                                                                                 ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                                                                                 ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                                                                                 ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                                                                                 ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Signed Integer                                                                          ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                                                                                 ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                                                                                 ;
+; BYTE_SIZE                          ; 8                    ; Untyped                                                                                 ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                                                                                 ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                                                                                 ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                                                                                 ;
+; INIT_FILE                          ; ROM_ID.hex           ; Untyped                                                                                 ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                                                                                 ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                                                                                 ;
+; CLOCK_ENABLE_INPUT_A               ; BYPASS               ; Untyped                                                                                 ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                                                                                 ;
+; CLOCK_ENABLE_OUTPUT_A              ; BYPASS               ; Untyped                                                                                 ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                                                                                 ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                                                                                 ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                                                                                 ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                                                                                 ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                                                                                 ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                                                                                 ;
+; DEVICE_FAMILY                      ; Cyclone V            ; Untyped                                                                                 ;
+; CBXI_PARAMETER                     ; altsyncram_qcf1      ; Untyped                                                                                 ;
++------------------------------------+----------------------+-----------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: controlUnit:cU1|authentication_FSM:AFSM1|password_check:pc1 ;
++-----------------+-------+--------------------------------------------------------------------------------+
+; Parameter Name  ; Value ; Type                                                                           ;
++-----------------+-------+--------------------------------------------------------------------------------+
+; check_btn_press ; 0     ; Signed Integer                                                                 ;
+; ROM_fetch       ; 1     ; Signed Integer                                                                 ;
+; cycle1          ; 2     ; Signed Integer                                                                 ;
+; cycle2          ; 3     ; Signed Integer                                                                 ;
+; ROM_catch       ; 4     ; Signed Integer                                                                 ;
+; compare         ; 5     ; Signed Integer                                                                 ;
+; verify          ; 6     ; Signed Integer                                                                 ;
+; success         ; 7     ; Signed Integer                                                                 ;
+; init            ; 8     ; Signed Integer                                                                 ;
++-----------------+-------+--------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: controlUnit:cU1|authentication_FSM:AFSM1|password_check:pc1|ROM_PSWD:pswd_repo|altsyncram:altsyncram_component ;
++------------------------------------+----------------------+-------------------------------------------------------------------------------------------------+
+; Parameter Name                     ; Value                ; Type                                                                                            ;
++------------------------------------+----------------------+-------------------------------------------------------------------------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                                                                                         ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                                                                                      ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                                                                                    ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                                                                                    ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                                                                                  ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                                                                                         ;
+; OPERATION_MODE                     ; ROM                  ; Untyped                                                                                         ;
+; WIDTH_A                            ; 4                    ; Signed Integer                                                                                  ;
+; WIDTHAD_A                          ; 6                    ; Signed Integer                                                                                  ;
+; NUMWORDS_A                         ; 64                   ; Signed Integer                                                                                  ;
+; OUTDATA_REG_A                      ; CLOCK0               ; Untyped                                                                                         ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                                                                                         ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                                                                                         ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                                                                                         ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                                                                                         ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                                                                                         ;
+; WIDTH_B                            ; 1                    ; Untyped                                                                                         ;
+; WIDTHAD_B                          ; 1                    ; Untyped                                                                                         ;
+; NUMWORDS_B                         ; 1                    ; Untyped                                                                                         ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                                                                                         ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                                                                                         ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                                                                                         ;
+; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                                                                                         ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                                                                                         ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                                                                                         ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                                                                                         ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                                                                                         ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                                                                                         ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                                                                                         ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                                                                                         ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                                                                                         ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Signed Integer                                                                                  ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                                                                                         ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                                                                                         ;
+; BYTE_SIZE                          ; 8                    ; Untyped                                                                                         ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                                                                                         ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                                                                                         ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                                                                                         ;
+; INIT_FILE                          ; ROM_PSWD.hex         ; Untyped                                                                                         ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                                                                                         ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                                                                                         ;
+; CLOCK_ENABLE_INPUT_A               ; BYPASS               ; Untyped                                                                                         ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                                                                                         ;
+; CLOCK_ENABLE_OUTPUT_A              ; BYPASS               ; Untyped                                                                                         ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                                                                                         ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                                                                                         ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                                                                                         ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                                                                                         ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                                                                                         ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                                                                                         ;
+; DEVICE_FAMILY                      ; Cyclone V            ; Untyped                                                                                         ;
+; CBXI_PARAMETER                     ; altsyncram_bkf1      ; Untyped                                                                                         ;
++------------------------------------+----------------------+-------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                                                                                                           ;
++-------------------------------------------+----------------------------------------------------------------------------------------------------------------+
+; Name                                      ; Value                                                                                                          ;
++-------------------------------------------+----------------------------------------------------------------------------------------------------------------+
+; Number of entity instances                ; 2                                                                                                              ;
+; Entity Instance                           ; controlUnit:cU1|authentication_FSM:AFSM1|ID_check:ic1|ROM_ID:passwords|altsyncram:altsyncram_component         ;
+;     -- OPERATION_MODE                     ; ROM                                                                                                            ;
+;     -- WIDTH_A                            ; 4                                                                                                              ;
+;     -- NUMWORDS_A                         ; 64                                                                                                             ;
+;     -- OUTDATA_REG_A                      ; CLOCK0                                                                                                         ;
+;     -- WIDTH_B                            ; 1                                                                                                              ;
+;     -- NUMWORDS_B                         ; 1                                                                                                              ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                                                                                         ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                                                                                   ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                                                                                           ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                                                                                      ;
+; Entity Instance                           ; controlUnit:cU1|authentication_FSM:AFSM1|password_check:pc1|ROM_PSWD:pswd_repo|altsyncram:altsyncram_component ;
+;     -- OPERATION_MODE                     ; ROM                                                                                                            ;
+;     -- WIDTH_A                            ; 4                                                                                                              ;
+;     -- NUMWORDS_A                         ; 64                                                                                                             ;
+;     -- OUTDATA_REG_A                      ; CLOCK0                                                                                                         ;
+;     -- WIDTH_B                            ; 1                                                                                                              ;
+;     -- NUMWORDS_B                         ; 1                                                                                                              ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                                                                                         ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                                                                                   ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                                                                                           ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                                                                                      ;
++-------------------------------------------+----------------------------------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "controlUnit:cU1"                                                                                              ;
++-----------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; Port      ; Type   ; Severity ; Details                                                                                                  ;
++-----------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; logged_in ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
++-----------+--------+----------+----------------------------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "button_shaper:start_game_player_load"                                               ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; out  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 61                          ;
+;     ENA               ; 29                          ;
+;     plain             ; 32                          ;
+; arriav_lcell_comb     ; 110                         ;
+;     extend            ; 1                           ;
+;         7 data inputs ; 1                           ;
+;     normal            ; 109                         ;
+;         0 data inputs ; 2                           ;
+;         1 data inputs ; 1                           ;
+;         2 data inputs ; 3                           ;
+;         3 data inputs ; 23                          ;
+;         4 data inputs ; 22                          ;
+;         5 data inputs ; 19                          ;
+;         6 data inputs ; 39                          ;
+; boundary_port         ; 57                          ;
+; stratixv_ram_block    ; 8                           ;
+;                       ;                             ;
+; Max LUT depth         ; 4.00                        ;
+; Average LUT depth     ; 2.03                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:00     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
+    Info: Processing started: Thu Apr 23 01:51:47 2026
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off proj -c proj
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 8 of the 8 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file /add_labs/proj/src/password_check.v
+    Info (12023): Found entity 1: password_check File: C:/ADD_labs/proj/src/password_check.v Line: 5
+Warning (12019): Can't analyze file -- file ../src/rng.v is missing
+Warning (10275): Verilog HDL Module Instantiation warning at proj.v(72): ignored dangling comma in List of Port Connections File: C:/ADD_labs/proj/src/proj.v Line: 72
+Info (12021): Found 1 design units, including 1 entities, in source file /add_labs/proj/src/proj.v
+    Info (12023): Found entity 1: proj File: C:/ADD_labs/proj/src/proj.v Line: 1
+Warning (12019): Can't analyze file -- file ../src/loadreg.v is missing
+Warning (12019): Can't analyze file -- file ../src/LFSR_counter.v is missing
+Info (12021): Found 1 design units, including 1 entities, in source file /add_labs/proj/src/id_check.v
+    Info (12023): Found entity 1: ID_check File: C:/ADD_labs/proj/src/ID_check.v Line: 5
+Warning (12019): Can't analyze file -- file ../src/game_controller.v is missing
+Info (12021): Found 1 design units, including 1 entities, in source file /add_labs/proj/src/display_manager.v
+    Info (12023): Found entity 1: display_manager File: C:/ADD_labs/proj/src/display_manager.v Line: 6
+Info (12021): Found 1 design units, including 1 entities, in source file /add_labs/proj/src/decoder7segment.v
+    Info (12023): Found entity 1: decoder7Segment File: C:/ADD_labs/proj/src/decoder7Segment.v Line: 6
+Info (12021): Found 1 design units, including 1 entities, in source file /add_labs/proj/src/controlunit.v
+    Info (12023): Found entity 1: controlUnit File: C:/ADD_labs/proj/src/controlUnit.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file /add_labs/proj/src/button_shaper.v
+    Info (12023): Found entity 1: button_shaper File: C:/ADD_labs/proj/src/button_shaper.v Line: 7
+Info (12021): Found 1 design units, including 1 entities, in source file /add_labs/proj/src/authentication_fsm.v
+    Info (12023): Found entity 1: authentication_FSM File: C:/ADD_labs/proj/src/authentication_FSM.v Line: 5
+Info (12021): Found 1 design units, including 1 entities, in source file rom_pswd.v
+    Info (12023): Found entity 1: ROM_PSWD File: C:/ADD_labs/proj/syn/ROM_PSWD.v Line: 40
+Info (12021): Found 1 design units, including 1 entities, in source file rom_id.v
+    Info (12023): Found entity 1: ROM_ID File: C:/ADD_labs/proj/syn/ROM_ID.v Line: 40
+Info (12127): Elaborating entity "proj" for the top level hierarchy
+Info (12128): Elaborating entity "button_shaper" for hierarchy "button_shaper:authentication" File: C:/ADD_labs/proj/src/proj.v Line: 26
+Info (12128): Elaborating entity "controlUnit" for hierarchy "controlUnit:cU1" File: C:/ADD_labs/proj/src/proj.v Line: 46
+Warning (10034): Output port "logged_in" at controlUnit.v(12) has no driver File: C:/ADD_labs/proj/src/controlUnit.v Line: 12
+Info (12128): Elaborating entity "authentication_FSM" for hierarchy "controlUnit:cU1|authentication_FSM:AFSM1" File: C:/ADD_labs/proj/src/controlUnit.v Line: 23
+Info (12128): Elaborating entity "ID_check" for hierarchy "controlUnit:cU1|authentication_FSM:AFSM1|ID_check:ic1" File: C:/ADD_labs/proj/src/authentication_FSM.v Line: 27
+Warning (10230): Verilog HDL assignment warning at ID_check.v(63): truncated value with size 32 to match size of target (4) File: C:/ADD_labs/proj/src/ID_check.v Line: 63
+Info (12128): Elaborating entity "ROM_ID" for hierarchy "controlUnit:cU1|authentication_FSM:AFSM1|ID_check:ic1|ROM_ID:passwords" File: C:/ADD_labs/proj/src/ID_check.v Line: 30
+Info (12128): Elaborating entity "altsyncram" for hierarchy "controlUnit:cU1|authentication_FSM:AFSM1|ID_check:ic1|ROM_ID:passwords|altsyncram:altsyncram_component" File: C:/ADD_labs/proj/syn/ROM_ID.v Line: 82
+Info (12130): Elaborated megafunction instantiation "controlUnit:cU1|authentication_FSM:AFSM1|ID_check:ic1|ROM_ID:passwords|altsyncram:altsyncram_component" File: C:/ADD_labs/proj/syn/ROM_ID.v Line: 82
+Info (12133): Instantiated megafunction "controlUnit:cU1|authentication_FSM:AFSM1|ID_check:ic1|ROM_ID:passwords|altsyncram:altsyncram_component" with the following parameter: File: C:/ADD_labs/proj/syn/ROM_ID.v Line: 82
+    Info (12134): Parameter "address_aclr_a" = "NONE"
+    Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
+    Info (12134): Parameter "clock_enable_output_a" = "BYPASS"
+    Info (12134): Parameter "init_file" = "ROM_ID.hex"
+    Info (12134): Parameter "intended_device_family" = "Cyclone V"
+    Info (12134): Parameter "lpm_hint" = "ENABLE_RUNTIME_MOD=NO"
+    Info (12134): Parameter "lpm_type" = "altsyncram"
+    Info (12134): Parameter "numwords_a" = "64"
+    Info (12134): Parameter "operation_mode" = "ROM"
+    Info (12134): Parameter "outdata_aclr_a" = "NONE"
+    Info (12134): Parameter "outdata_reg_a" = "CLOCK0"
+    Info (12134): Parameter "widthad_a" = "6"
+    Info (12134): Parameter "width_a" = "4"
+    Info (12134): Parameter "width_byteena_a" = "1"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_qcf1.tdf
+    Info (12023): Found entity 1: altsyncram_qcf1 File: C:/ADD_labs/proj/syn/db/altsyncram_qcf1.tdf Line: 28
+Info (12128): Elaborating entity "altsyncram_qcf1" for hierarchy "controlUnit:cU1|authentication_FSM:AFSM1|ID_check:ic1|ROM_ID:passwords|altsyncram:altsyncram_component|altsyncram_qcf1:auto_generated" File: c:/altera_lite/25.1std/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
+Info (12128): Elaborating entity "password_check" for hierarchy "controlUnit:cU1|authentication_FSM:AFSM1|password_check:pc1" File: C:/ADD_labs/proj/src/authentication_FSM.v Line: 40
+Warning (10230): Verilog HDL assignment warning at password_check.v(55): truncated value with size 32 to match size of target (4) File: C:/ADD_labs/proj/src/password_check.v Line: 55
+Info (12128): Elaborating entity "ROM_PSWD" for hierarchy "controlUnit:cU1|authentication_FSM:AFSM1|password_check:pc1|ROM_PSWD:pswd_repo" File: C:/ADD_labs/proj/src/password_check.v Line: 23
+Info (12128): Elaborating entity "altsyncram" for hierarchy "controlUnit:cU1|authentication_FSM:AFSM1|password_check:pc1|ROM_PSWD:pswd_repo|altsyncram:altsyncram_component" File: C:/ADD_labs/proj/syn/ROM_PSWD.v Line: 82
+Info (12130): Elaborated megafunction instantiation "controlUnit:cU1|authentication_FSM:AFSM1|password_check:pc1|ROM_PSWD:pswd_repo|altsyncram:altsyncram_component" File: C:/ADD_labs/proj/syn/ROM_PSWD.v Line: 82
+Info (12133): Instantiated megafunction "controlUnit:cU1|authentication_FSM:AFSM1|password_check:pc1|ROM_PSWD:pswd_repo|altsyncram:altsyncram_component" with the following parameter: File: C:/ADD_labs/proj/syn/ROM_PSWD.v Line: 82
+    Info (12134): Parameter "address_aclr_a" = "NONE"
+    Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
+    Info (12134): Parameter "clock_enable_output_a" = "BYPASS"
+    Info (12134): Parameter "init_file" = "ROM_PSWD.hex"
+    Info (12134): Parameter "intended_device_family" = "Cyclone V"
+    Info (12134): Parameter "lpm_hint" = "ENABLE_RUNTIME_MOD=NO"
+    Info (12134): Parameter "lpm_type" = "altsyncram"
+    Info (12134): Parameter "numwords_a" = "64"
+    Info (12134): Parameter "operation_mode" = "ROM"
+    Info (12134): Parameter "outdata_aclr_a" = "NONE"
+    Info (12134): Parameter "outdata_reg_a" = "CLOCK0"
+    Info (12134): Parameter "widthad_a" = "6"
+    Info (12134): Parameter "width_a" = "4"
+    Info (12134): Parameter "width_byteena_a" = "1"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_bkf1.tdf
+    Info (12023): Found entity 1: altsyncram_bkf1 File: C:/ADD_labs/proj/syn/db/altsyncram_bkf1.tdf Line: 28
+Info (12128): Elaborating entity "altsyncram_bkf1" for hierarchy "controlUnit:cU1|authentication_FSM:AFSM1|password_check:pc1|ROM_PSWD:pswd_repo|altsyncram:altsyncram_component|altsyncram_bkf1:auto_generated" File: c:/altera_lite/25.1std/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
+Info (12128): Elaborating entity "decoder7Segment" for hierarchy "decoder7Segment:auth_index" File: C:/ADD_labs/proj/src/proj.v Line: 52
+Info (12128): Elaborating entity "display_manager" for hierarchy "display_manager:dm1" File: C:/ADD_labs/proj/src/proj.v Line: 72
+Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "hex5_display[0]" is stuck at VCC File: C:/ADD_labs/proj/src/proj.v Line: 12
+    Warning (13410): Pin "hex5_display[1]" is stuck at VCC File: C:/ADD_labs/proj/src/proj.v Line: 12
+    Warning (13410): Pin "hex5_display[2]" is stuck at VCC File: C:/ADD_labs/proj/src/proj.v Line: 12
+    Warning (13410): Pin "hex5_display[3]" is stuck at VCC File: C:/ADD_labs/proj/src/proj.v Line: 12
+    Warning (13410): Pin "hex5_display[4]" is stuck at VCC File: C:/ADD_labs/proj/src/proj.v Line: 12
+    Warning (13410): Pin "hex5_display[5]" is stuck at VCC File: C:/ADD_labs/proj/src/proj.v Line: 12
+    Warning (13410): Pin "hex5_display[6]" is stuck at VCC File: C:/ADD_labs/proj/src/proj.v Line: 12
+    Warning (13410): Pin "hex4_display[0]" is stuck at VCC File: C:/ADD_labs/proj/src/proj.v Line: 13
+    Warning (13410): Pin "hex4_display[1]" is stuck at VCC File: C:/ADD_labs/proj/src/proj.v Line: 13
+    Warning (13410): Pin "hex4_display[2]" is stuck at VCC File: C:/ADD_labs/proj/src/proj.v Line: 13
+    Warning (13410): Pin "hex4_display[3]" is stuck at VCC File: C:/ADD_labs/proj/src/proj.v Line: 13
+    Warning (13410): Pin "hex4_display[4]" is stuck at VCC File: C:/ADD_labs/proj/src/proj.v Line: 13
+    Warning (13410): Pin "hex4_display[5]" is stuck at VCC File: C:/ADD_labs/proj/src/proj.v Line: 13
+    Warning (13410): Pin "hex4_display[6]" is stuck at VCC File: C:/ADD_labs/proj/src/proj.v Line: 13
+    Warning (13410): Pin "hex3_display[0]" is stuck at VCC File: C:/ADD_labs/proj/src/proj.v Line: 14
+    Warning (13410): Pin "hex3_display[1]" is stuck at VCC File: C:/ADD_labs/proj/src/proj.v Line: 14
+    Warning (13410): Pin "hex3_display[2]" is stuck at VCC File: C:/ADD_labs/proj/src/proj.v Line: 14
+    Warning (13410): Pin "hex3_display[3]" is stuck at VCC File: C:/ADD_labs/proj/src/proj.v Line: 14
+    Warning (13410): Pin "hex3_display[4]" is stuck at VCC File: C:/ADD_labs/proj/src/proj.v Line: 14
+    Warning (13410): Pin "hex3_display[5]" is stuck at VCC File: C:/ADD_labs/proj/src/proj.v Line: 14
+    Warning (13410): Pin "hex3_display[6]" is stuck at VCC File: C:/ADD_labs/proj/src/proj.v Line: 14
+    Warning (13410): Pin "hex1_display[0]" is stuck at VCC File: C:/ADD_labs/proj/src/proj.v Line: 16
+    Warning (13410): Pin "hex1_display[1]" is stuck at VCC File: C:/ADD_labs/proj/src/proj.v Line: 16
+    Warning (13410): Pin "hex1_display[2]" is stuck at VCC File: C:/ADD_labs/proj/src/proj.v Line: 16
+    Warning (13410): Pin "hex1_display[3]" is stuck at VCC File: C:/ADD_labs/proj/src/proj.v Line: 16
+    Warning (13410): Pin "hex1_display[4]" is stuck at VCC File: C:/ADD_labs/proj/src/proj.v Line: 16
+    Warning (13410): Pin "hex1_display[5]" is stuck at VCC File: C:/ADD_labs/proj/src/proj.v Line: 16
+    Warning (13410): Pin "hex1_display[6]" is stuck at VCC File: C:/ADD_labs/proj/src/proj.v Line: 16
+    Warning (13410): Pin "hex0_display[0]" is stuck at VCC File: C:/ADD_labs/proj/src/proj.v Line: 18
+    Warning (13410): Pin "hex0_display[1]" is stuck at VCC File: C:/ADD_labs/proj/src/proj.v Line: 18
+    Warning (13410): Pin "hex0_display[2]" is stuck at VCC File: C:/ADD_labs/proj/src/proj.v Line: 18
+    Warning (13410): Pin "hex0_display[3]" is stuck at VCC File: C:/ADD_labs/proj/src/proj.v Line: 18
+    Warning (13410): Pin "hex0_display[4]" is stuck at VCC File: C:/ADD_labs/proj/src/proj.v Line: 18
+    Warning (13410): Pin "hex0_display[5]" is stuck at VCC File: C:/ADD_labs/proj/src/proj.v Line: 18
+    Warning (13410): Pin "hex0_display[6]" is stuck at VCC File: C:/ADD_labs/proj/src/proj.v Line: 18
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 14 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 1 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "game_start_btn" File: C:/ADD_labs/proj/src/proj.v Line: 7
+Info (21057): Implemented 185 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 13 input pins
+    Info (21059): Implemented 44 output pins
+    Info (21061): Implemented 120 logic cells
+    Info (21064): Implemented 8 RAM segments
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 48 warnings
+    Info: Peak virtual memory: 4902 megabytes
+    Info: Processing ended: Thu Apr 23 01:51:53 2026
+    Info: Elapsed time: 00:00:06
+    Info: Total CPU time (on all processors): 00:00:15
+
+

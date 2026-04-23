@@ -1,0 +1,36 @@
+
+State Machine - |proj|controlUnit:cU1|authentication_FSM:AFSM1|password_check:pc1|state
+Name state.check_btn_press state.success state.verify state.compare state.ROM_catch state.cycle2 state.cycle1 state.ROM_fetch state.init 
+state.init 0 0 0 0 0 0 0 0 0 
+state.ROM_fetch 0 0 0 0 0 0 0 1 1 
+state.cycle1 0 0 0 0 0 0 1 0 1 
+state.cycle2 0 0 0 0 0 1 0 0 1 
+state.ROM_catch 0 0 0 0 1 0 0 0 1 
+state.compare 0 0 0 1 0 0 0 0 1 
+state.verify 0 0 1 0 0 0 0 0 1 
+state.success 0 1 0 0 0 0 0 0 1 
+state.check_btn_press 1 0 0 0 0 0 0 0 1 
+
+State Machine - |proj|controlUnit:cU1|authentication_FSM:AFSM1|ID_check:ic1|state
+Name state.check_btn_press state.success state.verify state.compare state.ROM_catch state.cycle2 state.cycle1 state.ROM_fetch state.init 
+state.init 0 0 0 0 0 0 0 0 0 
+state.ROM_fetch 0 0 0 0 0 0 0 1 1 
+state.cycle1 0 0 0 0 0 0 1 0 1 
+state.cycle2 0 0 0 0 0 1 0 0 1 
+state.ROM_catch 0 0 0 0 1 0 0 0 1 
+state.compare 0 0 0 1 0 0 0 0 1 
+state.verify 0 0 1 0 0 0 0 0 1 
+state.success 0 1 0 0 0 0 0 0 1 
+state.check_btn_press 1 0 0 0 0 0 0 0 1 
+
+State Machine - |proj|button_shaper:start_game_player_load|state
+Name state.zero state.two state.one 
+state.zero 0 0 0 
+state.one 1 0 1 
+state.two 1 1 0 
+
+State Machine - |proj|button_shaper:authentication|state
+Name state.zero state.two state.one 
+state.zero 0 0 0 
+state.one 1 0 1 
+state.two 1 1 0 
