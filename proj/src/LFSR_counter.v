@@ -1,21 +1,18 @@
-// ECE 5440
-// Author: Juan Aguilar, 1246
-// LFSR_counter
-// Random Number Generator - LFSR Implementation
-// Any comments and log
 module LFSR_counter(
-    input clock,
+    input clk,
     input reset,
+    //input pulse,
     output [3:0] gen_num
     );
 
   reg [15:0] LFSR;
   wire feedback = LFSR[15];
 
-  always @(posedge clock) begin
+  always @(posedge clk) begin
     if(!reset)
         LFSR <= 16'h5F00;
     else begin
+      //if(pulse) begin
         LFSR[0] <= feedback;
         LFSR[1] <= LFSR[0];
         LFSR[2] <= LFSR[1] ^ feedback;
@@ -32,6 +29,7 @@ module LFSR_counter(
         LFSR[13] <= LFSR[12];
         LFSR[14] <= LFSR[13];
         LFSR[15] <= LFSR[14];
+      //end
     end
   end
 

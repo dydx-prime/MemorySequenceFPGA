@@ -1,13 +1,9 @@
-// ECE 5440
-// Author: Juan Aguilar, 1246
-// timer_1ms
-// 1ms timer - LFSR Implementation
-// Any comments and log
-module timer_1ms(clk, reset, enable, one_ms_timeout);
-    input clk, reset, enable;
-    output one_ms_timeout;
-    reg one_ms_timeout;
-
+module timer_1ms(
+    input clk,
+    input reset,
+    input enable,
+    output reg one_ms_timeout
+);
     reg [15:0] LFSR;
     wire feedback = LFSR[15];
 

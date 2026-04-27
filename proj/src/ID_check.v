@@ -60,7 +60,7 @@ module ID_check(
 					 end
 					 
                 check_btn_press: begin
-                    display_data <= count + 1;
+                    display_data <= count + 4'b1;
                     auth_passed <= 1'b0;
                     if(auth_btn) begin			
                         state <= ROM_fetch;

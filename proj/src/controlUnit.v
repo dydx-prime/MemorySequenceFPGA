@@ -7,8 +7,8 @@ module controlUnit(
 
     output ID_match,
     output PSWD_match,
-    output [3:0] display_data,
-    output logged_in
+    output [3:0] display_data
+    //output logged_in
 );
 
     authentication_FSM AFSM1(

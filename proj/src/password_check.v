@@ -51,7 +51,7 @@ module password_check(
                 end
 
                 check_btn_press: begin
-                    display_data <= count + 1;
+                    display_data <= count + 4'b1;
                     logged_in <= 1'b0;
 
                     if(pswd_btn_press) 
