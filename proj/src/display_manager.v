@@ -4,7 +4,7 @@
 // A partial control unit that displays the authentication arrangement vs the game arrangement
 // Any comments and log
 module display_manager(
-	 input logged_in,
+	input logged_in,
     input rng_on,
     input timer_on,
     input [6:0] player_input_decoded, 

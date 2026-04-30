@@ -68,15 +68,17 @@ module proj(
         .seven_segment_data(playerIn_decoded)
     );
 
-    wire rng_on, rng_done;
+    wire rng_on, rng_done, wr_en, rd_en;
     wire [3:0] rng_count, rng_speed, rng_val;
     RNG_top rng_unit(
         .clk       (clk),
         .reset     (reset),
+		  .game_reset(fifo_reset),
         .RNG_on    (rng_on),
         .RNG_count (rng_count),
         .RNG_speed (rng_speed),
-        .RNG_done  (rng_done), // output
+        .wr_en     (wr_en), // output
+        .RNG_done  (rng_done),
         .RNG_val   (rng_val)
     );
 
@@ -97,8 +99,23 @@ module proj(
         .digit2_out     (ones_out)
     );
 
+    wire full, empty;
+    wire [3:0] data_out;
+    wire fifo_reset;
+    fifo #(.WIDTH(4), .DEPTH(20)) phai_pho (
+        .clk        (clk),
+        .reset      (reset),
+		  .fifo_reset (fifo_reset),
+        .wr_en      (wr_en),
+        .rd_en      (rd_en),
+        .data_in    (rng_val),
+        .data_out   (data_out), // output
+        .full       (full), // leave floating for now, not necessary
+        .empty      (empty) // leave floating
+    );
+
     wire [3:0] gamemode_index;
-	 wire logged_in = password_passed;
+	wire logged_in = password_passed;
     game_ctrl gc1(
     .clk            (clk),
     .reset          (reset),
@@ -108,7 +125,8 @@ module proj(
     .auth_btn       (auth_shaped),
     .timer_out      (timer_out), 
     .RNG_seq_done   (rng_done), 
-    .player_value   (player_input), 
+    .player_value   (player_input),
+    .fifo_front     (data_out),
     //.logout         (), // output
 
     .LFSR_enable    (rng_on),
@@ -122,7 +140,9 @@ module proj(
     .timer_speed    (timer_speed), 
 
     .player_input   (player_input_to_decode),
-    .display_data   (gamemode_index)
+    .display_data   (gamemode_index),
+    .rd_en          (rd_en),
+    .fifo_reset     (fifo_reset)
     );
 
 
@@ -148,12 +168,12 @@ module proj(
     );   
 
     display_manager dm1(
-		  .logged_in 				   (logged_in),
+		.logged_in 		         (logged_in),
         .rng_on                  (rng_on),
         .timer_on                (timer_enable),
         .player_input_decoded    (playerIn_decoded), 
         .authenticationFSM_index (authFSM_index_decoded),
-        .gamemode_index         (gamemode_index_decoded),
+        .gamemode_index          (gamemode_index_decoded),
         .timer_tenths            (timer_tenths_decoded),
         .timer_ones              (timer_ones_decoded),
         .rng_values              (rng_val_decoded),
